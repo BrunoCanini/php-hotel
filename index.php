@@ -57,7 +57,7 @@
 
     <h1 class="text-center m-3">HOTELS</h1>
 
-    <table class="table table-hover bg-white">
+    <table class="table table-hover bg-white mt-5">
         <thead>
             <tr>
                 <?php 
@@ -70,19 +70,45 @@
         <tbody>
                 <?php 
 
+                    $park = $_GET["parcheggio"];
+
                     foreach ( $hotels as $atribute ) {
-                        echo '<tr>' ;
-                        echo '<td>' . $atribute["name"] . '</td>';
-                        echo '<td>' . $atribute["description"] . '</td>';
-                        echo '<td>' . $atribute["parking"] . '</td>';
-                        echo '<td>' . $atribute["vote"] . '</td>';
-                        echo '<td>' . $atribute["distance_to_center"] . '</td>';
-                        echo '</tr>' ;
+
+
+                        if($atribute["parking"] === true){
+                            $atribute["parking"] = "yess";
+                        } else {
+                            $atribute["parking"] = "no";
+                        };
+
+                        if($park === $atribute["parking"]){
+                            echo '<tr>' ;
+                            echo '<td>' . $atribute["name"] . '</td>';
+                            echo '<td>' . $atribute["description"] . '</td>';
+                            echo '<td>' . $atribute["parking"]  . '</td>';
+                            echo '<td>' . $atribute["vote"] . '</td>';
+                            echo '<td>' . $atribute["distance_to_center"] . '</td>';
+                            echo '</tr>' ;
+                        };
+
                     } 
-                    
+
                 ?>
         </tbody>
     </table>
+
+    <div>
+        <form action="index.php">
+
+            <select name="parcheggio">
+                <option value="yess" >yess</option>
+                <option value="no">no</option>
+            </select>
+
+            <button type="submit" >CERCA</button>
+
+        </form>
+    </div>
 
 </main>
 
