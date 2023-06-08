@@ -54,6 +54,9 @@
 ?>
 
 <main>
+
+    <h1 class="text-center m-3">HOTELS</h1>
+
     <table class="table table-hover bg-white">
         <thead>
             <tr>
@@ -65,21 +68,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
                 <?php 
-                
-                foreach ( $hotels as $hotelArray ) {
-                    echo '<tr>' ;
-                    foreach ( $hotelArray as $hotel ){
 
-                        echo '<td>' . $hotel . '</td>' ;
-                    }
-
-                    echo '</tr>' ;
-                }
-                
+                    foreach ( $hotels as $atribute ) {
+                        echo '<tr>' ;
+                        echo '<td>' . $atribute["name"] . '</td>';
+                        echo '<td>' . $atribute["description"] . '</td>';
+                        echo '<td>' . $atribute["parking"] . '</td>';
+                        echo '<td>' . $atribute["vote"] . '</td>';
+                        echo '<td>' . $atribute["distance_to_center"] . '</td>';
+                        echo '</tr>' ;
+                    } 
+                    
                 ?>
-            </tr>
         </tbody>
     </table>
 
